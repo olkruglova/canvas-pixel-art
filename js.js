@@ -12,10 +12,10 @@ var canvas = $("#pixel_canvas");
 //build a table with a function makeGrid(), using a For Loop;
 function makeGrid() {
   canvas.children().remove(); //empty the grid for each submit
-  var rows = $("#input_width").val();
+  var rows = $("#input_height").val();
    for (var r = 0; r < rows; r++) {
      canvas.append("<tr></tr>");
-  var columns = $("#input_height").val();
+  var columns = $("#input_width").val();
    for (var c = 0; c < columns; c++) {
      canvas.children().last().append("<td></td>");
   };
