@@ -1,34 +1,66 @@
 <html>
+
 <head>
     <title>Pixel Art Maker!</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://use.fontawesome.com/f09e1faf03.js"></script>
+    <script src="https://use.fontawesome.com/f09e1faf03.js"></script>
 </head>
-<body>
-    <h1>Lab: Pixel Art Maker</h1>
 
-    <h2>Choose Grid Size</h2>
-    <form id="sizePicker">
-        Grid Height:
-        <input type="number" id="input_height" name="height" min="1" value="5">
-        Grid Width:
-        <input type="number" id="input_width" name="width" min="1" value="5">
-        <input class = "submit" type="submit" value = "Create">
-    </form>
-	
-	<h2 class = "color">Pick A Color</h2>
-    <input type="color" id="colorPicker"> 
-		
-	<h2 class = "tools">Tools</h2>
-	<button class = "colorAll"><i class="fa fa-tint" aria-hidden="true">  Color all</i></button>
-	<button class = "clearAll"><i class="fa fa-eraser" aria-hidden="true">  Clear all</i></button>
-	<button class = "delCanvas"><i class="fa fa-trash" aria-hidden="true">  Delete Grid</i></button>
-		  
-	<h2>Design Canvas</h2>
-    <table id="pixel_canvas"></table>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="header-image" src="./assets/Pixel_art_maker.png" alt="Pixel Art Maker"></img>
+            <h1 class="subheader">Ebrace the journey, pixel by pixel</h1>
+        </div>
+
+        <div class="content">
+            <div class="instruction">
+                <p>Choose a grid size and click "Create" to create your canvas.</p>
+                <p>Click on a cell to color it or click and drag to color multiple cells.</p>
+                <p>Click on the color picker to change the color.</p>
+                <p>Click on the tools to color all cells, clear all cells or delete the grid.</p>
+            </div>
+
+            <div class="toolbar">
+                <div class="canvas-size-picker">
+                    <h3 class="tool-header">Choose Grid Size:</h3>
+                    <form id="sizePicker">
+                        height:
+                        <input type="number" id="input_height" name="height" min="1" value="5">
+                        width:
+                        <input type="number" id="input_width" name="width" min="1" value="5">
+                        <button class="create" type="submit">Create</button>
+                    </form>
+
+                </div>
+
+                <div class="color-picker">
+                    <h3 class="tool-header">Pick A Color:</h3>
+                    <input type="color" id="colorPicker">
+                </div>
+
+                <div class="action-buttons">
+                    <button class="color-all"><i class="fa fa-tint" aria-hidden="true"> Color all</i></button>
+                    <button class="clear-all"><i class="fa fa-eraser" aria-hidden="true"> Clear all</i></button>
+                    <button class="delete-canvas"><i class="fa fa-trash" aria-hidden="true"> Delete Grid</i></button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Design Canvas</h2>
+        <table id="pixel_canvas"></table>
+    </div>
+
 
     <script src="js.js"></script>
 </body>
+
 </html>
