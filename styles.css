@@ -226,6 +226,10 @@ button {
     margin: 0 auto;
 }
 
+#canvas-grid{
+    position: relative;
+}
+
 table,
 tr,
 td {
@@ -261,5 +265,18 @@ input[type=number] {
     border: 2px solid var(--orange);
     color: var(--orange);
     border-radius: 4px;
+}
+
+.loader {
+    height:100%;
+    margin: 0 auto;
+    position: absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background-color: var(--gray);
+    opacity: 0.3;
+    color: var(--white);
 }
 

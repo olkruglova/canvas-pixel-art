@@ -20,25 +20,42 @@ $(function() {
 var canvas = $("#canvas");
 var canvasGrid = $("#canvas-grid");
 
+function addLoader() {
+    canvas.append("<div class='loader'><i class='fa-solid fa-spinner fa-spin-pulse fa-2x'></i></div>");
+    
+    const width = canvasGrid.width();
+    $(".loader").css("width", width || 220);
+}
+
+function removeLoader() {
+    $(".loader").remove();
+}
+
+
 function makeGrid() {
-    canvasGrid.children().remove();
-    var rows = $("#input-height").val();
+    addLoader();
+    setTimeout(function() {
+        canvasGrid.children().remove();
+        var rows = $("#input-height").val();
 
-    for (var r = 0; r < rows; r++) {
-        canvasGrid.append("<tr></tr>");
-        var columns = $("#input-width").val();
+        for (var r = 0; r < rows; r++) {
+            canvasGrid.append("<tr></tr>");
+            var columns = $("#input-width").val();
 
-        for (var c = 0; c < columns; c++) {
-            canvasGrid.children().last().append("<td></td>");
-        };
-    };
+            for (var c = 0; c < columns; c++) {
+                canvasGrid.children().last().append("<td></td>");
+            }
+        }
 
-    cleanCanvas();
+        cleanCanvas();
 
-    if (!rows || !columns) {
-        canvas.append("<div class='alert-message'></div>").text("Please enter a valid number of width and height");
-    };
-};
+        if (!rows || !columns) {
+            canvas.append("<div class='alert-message'></div>").text("Please enter a valid number of width and height");
+        }
+
+        removeLoader();
+    }, 100);
+}
 
 
 function checkIfAnyCellIsColored() {
@@ -99,13 +116,13 @@ $(".color-all").click(
 );
 
 function cleanCanvas(){
-    $("table, td").css("background-color", "")
+    $("table, td").css("background-color", "");
+    checkIfAnyCellIsColored();
 }
 
 //clean a canvas  
 $(".clear-all").click(function() {
         cleanCanvas();
-        checkIfAnyCellIsColored();    
     }
 );
 
@@ -118,13 +135,14 @@ $(".delete-canvas").click(function(){
 
 //download canvas
 $(".download-canvas").click(function() {
+    addLoader();
     html2canvas(document.querySelector("#canvas-grid")).then(function(canvas) {
         var imgData = canvas.toDataURL('image/png');
-
         var pdf = new jspdf.jsPDF();
 
         pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
-
         pdf.save("canvas.pdf");
+
+        removeLoader();
     });
 });
