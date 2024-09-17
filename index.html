@@ -4,6 +4,7 @@
     <title>Pixel Art Maker!</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
         data-auto-replace-svg="nest"></script>
@@ -14,22 +15,22 @@
 <body>
     <div class="container">
         <div class="header">
-            <img class="header-image" src="./assets/Pixel_art_maker.png" alt="Pixel Art Maker"></img>
-            <h1 class="subheader">Ebrace the journey, pixel by pixel</h1>
+            <img class="header-image" src="./assets/pixel_art_maker.png" alt="Pixel Art Maker">
+            <h1 class="subheader">Embrace the journey, pixel by pixel</h1>
         </div>
 
         <div class="content">
-            <div id="info" class="info">
-                <i class="fa-regular fa-circle-info fa-2x"></i>
-                <div id="instruction" class="instruction">
-                    <p>Choose a grid size and click "Create" to create your canvas.</p>
-                    <p>Click on a cell to color it or click and drag to color multiple cells.</p>
-                    <p>Click on the color picker to change the color.</p>
-                    <p>Click on the tools to color all cells, clear all cells or delete the grid.</p>
-                    <p>Click on the "Download" to download your pixel art.</p>
-                </div>
-            </div>
             <div class="toolbar">
+                <div id="info" class="info">
+                    <i class="fa-regular fa-circle-info fa-2x"></i>
+                    <div id="instruction" class="instruction">
+                        <p>Choose a grid size and click "Create" to create your canvas.</p>
+                        <p>Click on a cell to color it or click and drag to color multiple cells.</p>
+                        <p>Click on the color picker to change the color.</p>
+                        <p>Click on the tools to color all cells, clear all cells, or delete the grid.</p>
+                        <p>Click on the "Download" to download your pixel art.</p>
+                    </div>
+                </div>
                 <div class="canvas-size-picker">
                     <h3 class="tool-header">Choose a grid size:</h3>
                     <form id="size-picker">
@@ -48,11 +49,6 @@
 
                 </div>
 
-                <div class="color-picker">
-                    <h3 class="tool-header">Pick a color:</h3>
-                    <input type="color" id="color-picker" value="#692079">
-                </div>
-
                 <div class="action-buttons">
                     <button class="color-all"><i class="fa fa-tint" aria-hidden="true"></i>Color all</button>
                     <button class="clear-all"><i class="fa fa-eraser" aria-hidden="true"></i>Clear all</button>
@@ -60,15 +56,16 @@
                     <button class="download-canvas" disabled><i class="fa fa-download"
                             aria-hidden="true"></i>Download</button>
                 </div>
+
+                <div class="color-picker">
+                    <h3 class="tool-header">Pick a color:</h3>
+                    <input type="color" id="color-picker" value="#692079">
+                </div>
             </div>
         </div>
-
         <div id="canvas" class="canvas">
             <table id="canvas-grid"></table>
         </div>
-
-    </div>
-
     </div>
     <script src="js.js"></script>
 </body>

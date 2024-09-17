@@ -36,7 +36,7 @@ image.header-image {
 }
 
 .content {
-    width: 50%;
+    width: 650px;
     margin: 8rem auto 3rem;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ image.header-image {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .toolbar > * {
@@ -106,9 +106,10 @@ h3 {
 
 .color-picker {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 1.3rem;
+    max-width: 50%;
+    margin: 1rem auto 1.3rem;
 
     #color-picker{
         margin-left: 1.3rem;
@@ -131,7 +132,6 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-right: 2rem;
     color: var(--white);
     font-size: 1rem;
 
@@ -178,18 +178,17 @@ button {
 .action-buttons {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem 0 1.3rem;
 }
 
 .info {
     display: flex;
     position: relative;
-    width: 24px;
-    height: 24px;
     margin-bottom: 2rem;
     cursor: pointer;
+    align-self: flex-end;
 
     & .svg-inline--fa {
         color: var(--green);
@@ -231,7 +230,6 @@ table,
 tr,
 td {
     border: 1px solid var(--black);
-    /* cursor: url('./assets/brush.png'), default; */
 }
 
 table {
