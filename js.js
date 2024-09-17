@@ -40,14 +40,31 @@ function makeGrid() {
     };
 };
 
+
+function checkIfAnyCellIsColored() {
+    let isColored = false;
+    
+    $("td").each(function() {
+        if ($(this).css("background-color") !== "rgba(0, 0, 0, 0)" && $(this).css("background-color") !== "transparent") {
+            isColored = true;
+            return false;
+        }
+    });
+    
+    if (isColored) {
+        $(".download-canvas").prop("disabled", false);
+    } else {
+        $(".download-canvas").prop("disabled", true);
+    }
+}
+
+
 var isMouseDown = false;
 
-// Listen for mousedown event to set isMouseDown to true
 canvasGrid.on("mousedown", function() {
     isMouseDown = true;
 });
 
-// Listen for mouseup event to set isMouseDown to false
 canvasGrid.on("mouseup", function() {
     isMouseDown = false;
 });
@@ -56,12 +73,16 @@ canvasGrid.on("mouseup", function() {
 canvasGrid.on("click", "td", function(){ 
   var colors = $("#color-picker").val();
     $(this).css("background-color", colors);
+
+    checkIfAnyCellIsColored();
 });
 
 canvasGrid.on("mouseover", "td", function() {
     if (isMouseDown) {
         var colors = $("#color-picker").val();
         $(this).css("background-color", colors);
+
+        checkIfAnyCellIsColored();
     }
 });
 
@@ -83,7 +104,8 @@ function cleanCanvas(){
 
 //clean a canvas  
 $(".clear-all").click(function() {
-        cleanCanvas()    
+        cleanCanvas();
+        checkIfAnyCellIsColored();    
     }
 );
 
@@ -92,3 +114,15 @@ $(".delete-canvas").click(function(){
   $("table, td").children().remove();
 });
 
+//download canvas
+$(".download-canvas").click(function() {
+    html2canvas(document.querySelector("#canvas-grid")).then(function(canvas) {
+        var imgData = canvas.toDataURL('image/png');
+
+        var pdf = new jspdf.jsPDF();
+
+        pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
+
+        pdf.save("canvas.pdf");
+    });
+});
