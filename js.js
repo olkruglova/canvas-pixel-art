@@ -1,3 +1,11 @@
+$("#info").on("mouseover", function() {
+    $("#instruction").css("display", "block");
+})
+
+$("#info").on("mouseout", function() {
+    $("#instruction").css("display", "none");
+})
+
 //preventing the page from refreshing
 $("#sizePicker").on("submit", function(buildGrid) {
  makeGrid();
