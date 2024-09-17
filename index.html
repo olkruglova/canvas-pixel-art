@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/f09e1faf03.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+        data-auto-replace-svg="nest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -16,50 +19,57 @@
         </div>
 
         <div class="content">
-            <div class="instruction">
-                <p>Choose a grid size and click "Create" to create your canvas.</p>
-                <p>Click on a cell to color it or click and drag to color multiple cells.</p>
-                <p>Click on the color picker to change the color.</p>
-                <p>Click on the tools to color all cells, clear all cells or delete the grid.</p>
+            <div id="info" class="info">
+                <i class="fa-regular fa-circle-info fa-2x"></i>
+                <div id="instruction" class="instruction">
+                    <p>Choose a grid size and click "Create" to create your canvas.</p>
+                    <p>Click on a cell to color it or click and drag to color multiple cells.</p>
+                    <p>Click on the color picker to change the color.</p>
+                    <p>Click on the tools to color all cells, clear all cells or delete the grid.</p>
+                    <p>Click on the "Download" to download your pixel art.</p>
+                </div>
             </div>
-
             <div class="toolbar">
                 <div class="canvas-size-picker">
-                    <h3 class="tool-header">Choose Grid Size:</h3>
-                    <form id="sizePicker">
-                        height:
-                        <input type="number" id="input_height" name="height" min="1" value="5">
-                        width:
-                        <input type="number" id="input_width" name="width" min="1" value="5">
+                    <h3 class="tool-header">Choose a grid size:</h3>
+                    <form id="size-picker">
+                        <div class="input">
+                            <label for="input-width">width:</label>
+                            <input type="number" id="input-width" name="width" min="1" max="100" value="10">
+                        </div>
+
+                        <div class="input">
+                            <label for="input-height">height:</label>
+                            <input type="number" id="input-height" name="height" min="1" max="100" value="10">
+                        </div>
+
                         <button class="create" type="submit">Create</button>
                     </form>
 
                 </div>
 
                 <div class="color-picker">
-                    <h3 class="tool-header">Pick A Color:</h3>
-                    <input type="color" id="colorPicker">
+                    <h3 class="tool-header">Pick a color:</h3>
+                    <input type="color" id="color-picker" value="#692079">
                 </div>
 
                 <div class="action-buttons">
-                    <button class="color-all"><i class="fa fa-tint" aria-hidden="true"> Color all</i></button>
-                    <button class="clear-all"><i class="fa fa-eraser" aria-hidden="true"> Clear all</i></button>
-                    <button class="delete-canvas"><i class="fa fa-trash" aria-hidden="true"> Delete Grid</i></button>
-
+                    <button class="color-all"><i class="fa fa-tint" aria-hidden="true"></i>Color all</button>
+                    <button class="clear-all"><i class="fa fa-eraser" aria-hidden="true"></i>Clear all</button>
+                    <button class="delete-canvas"><i class="fa fa-trash" aria-hidden="true"></i>Delete canvas</button>
+                    <button class="download-canvas" disabled><i class="fa fa-download"
+                            aria-hidden="true"></i>Download</button>
                 </div>
-
             </div>
         </div>
 
+        <div id="canvas" class="canvas">
+            <table id="canvas-grid"></table>
+        </div>
 
-
-
-
-        <h2>Design Canvas</h2>
-        <table id="pixel_canvas"></table>
     </div>
 
-
+    </div>
     <script src="js.js"></script>
 </body>
 
