@@ -112,6 +112,8 @@ $(".clear-all").click(function() {
 //delete a grid
 $(".delete-canvas").click(function(){
   $("table, td").children().remove();
+
+  canvas.append("<div class='alert-message'>Start by creating a new grid.</div>")
 });
 
 //download canvas
